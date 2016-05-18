@@ -2,7 +2,7 @@ From romeohua/simple-php7:nodebug
 
 ENV BASEDIR /
 
-RUN yum -y update && yum install -y git && yum clean all
+RUN yum -y update && yum install -y git sudo && yum clean all
 
 WORKDIR ${BASEDIR}
 
