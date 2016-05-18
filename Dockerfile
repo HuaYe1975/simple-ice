@@ -4,6 +4,10 @@ ENV BASEDIR /
 
 RUN yum -y update && yum install -y git sudo && yum clean all
 
+# Edit sudoers file
+# To avoid error: sudo: sorry, you must have a tty to run sudo
+RUN sed -i -e "s/Defaults    requiretty.*/ #Defaults    requiretty/g" /etc/sudoers
+
 WORKDIR ${BASEDIR}
 
 RUN git clone --depth=1 https://github.com/ice/framework.git
