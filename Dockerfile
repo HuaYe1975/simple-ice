@@ -1,4 +1,4 @@
-From romeohua/simple-php7:nodebug
+From romeohua/simple-php7:pubroot
 
 ENV BASEDIR /
 
