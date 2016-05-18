@@ -15,7 +15,7 @@ RUN git clone --depth=1 https://github.com/ice/framework.git
 WORKDIR /framework
 RUN export PATH=$PATH:/usr/local/php/bin && ./install
 
-RUN echo "extension=/framework/build/php7/modules/ice.so" > /usr/local/php/etc/php.d/ice.ini
+RUN echo "extension=/framework/build/php7/modules/ice.so" >> /usr/local/php/etc/php.d/ice.ini
 
 RUN supervisorctl restart nginx
 
