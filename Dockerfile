@@ -11,7 +11,7 @@ RUN sed -i -e "s/Defaults    requiretty.*/ #Defaults    requiretty/g" /etc/sudoe
 WORKDIR ${BASEDIR}
 
 RUN git clone --depth=1 https://github.com/ice/framework.git
-RUN git clone --depth=1 https://github.com/phpredis/phpredis.git
+RUN git clone --depth=1 -b php7 https://github.com/phpredis/phpredis.git
 
 WORKDIR /framework
 RUN export PATH=$PATH:/usr/local/php/bin && ./install
@@ -20,7 +20,7 @@ RUN export PATH=$PATH:/usr/local/php/bin && ./install
 ADD ice.ini /usr/local/php/etc/php.d/ice.ini
 
 WORKDIR /phpredis
-RUN export PATH=$PATH:/usr/local/php/bin && git checkout php7 && phpize && ./configure && make && make install
+RUN export PATH=$PATH:/usr/local/php/bin && phpize && ./configure && make && make install
 ADD phpredis.ini /usr/local/php/etc/php.d/phpredis.ini
 
 
