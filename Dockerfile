@@ -24,9 +24,7 @@ RUN export PATH=$PATH:/usr/local/php/bin && phpize && ./configure && make && mak
 ADD phpredis.ini /usr/local/php/etc/php.d/phpredis.ini
 
 # Install phpunit
-RUN wget https://phar.phpunit.de/phpunit.phar
-RUN chmod +x phpunit.phar
-RUN phpunit.phar /usr/local/bin/phpunit
+RUN wget https://phar.phpunit.de/phpunit.phar && chmod +x phpunit.phar && mv phpunit.phar /usr/local/bin/phpunit
 
 RUN supervisorctl restart nginx
 
